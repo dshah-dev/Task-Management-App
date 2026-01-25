@@ -1,12 +1,28 @@
 import "./App.css";
-import LoginPage from "./feature/auth/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./feature/LoginPage";
+import ProtectedRoute from "./ProtectedRoute";
+import Board from "./feature/board";
 
 function App() {
   return (
     <>
       <AuthProvider>
-        <LoginPage />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Board/>
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
       </AuthProvider>
     </>
   );
