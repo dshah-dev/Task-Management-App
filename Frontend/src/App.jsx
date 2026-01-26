@@ -3,7 +3,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./feature/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
-import Board from "./feature/board";
+import Board from "./feature/board/Board";
+import TaskCard from "./feature/tasks/TaskCard";
 
 function App() {
   return (
