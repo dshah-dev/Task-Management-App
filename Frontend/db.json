@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Setup Project Structure",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-01-20",
+      "Name": "Alex"
+    },
+    {
+      "id": "2",
+      "title": "Implement Todo Logic",
+      "status": "in-progress",
+      "priority": "medium",
+      "dueDate": "2026-02-15",
+      "Name": "Sam"
+    },
+    {
+      "id": "f7ef",
+      "title": "Completed",
+      "Name": "Jane Smith",
+      "priority": "medium",
+      "dueDate": "2026-01-06",
+      "status": "done"
+    },
+    {
+      "id": "a8f0",
+      "title": "Done",
+      "Name": "Jane Smith",
+      "priority": "low",
+      "dueDate": "2026-01-06",
+      "status": "todo"
+    }
+  ]
+}

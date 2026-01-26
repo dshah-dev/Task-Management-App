@@ -35,7 +35,12 @@ function Board() {
         onClose={() => setIsPopUpWindowOpen(false)}
         title="Add New Task"
       >
-        <TaskForm />
+        <TaskForm
+          onSuccess={() => {
+            setIsPopUpWindowOpen(false);
+            refresh();
+          }}
+        />
       </PopUpWindow>
     </div>
   );
