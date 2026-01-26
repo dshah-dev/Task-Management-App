@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTasks } from "../../hooks/useTasks";
 import { useAuth } from "../../context/AuthContext";
+import TaskCard from "../tasks/TaskCard";
 import PopUpWindow from "../../Components/PopUpWindow";
 import TaskForm from "../tasks/TaskForm";
 import Button from "../../components/Button";
@@ -29,6 +30,23 @@ function Board() {
           </button>
         </div>
       </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {statuses.map((status) => (
+          <div key={status} className="bg-gray-200 p-4 rounded-lg">
+            <h3 className="font-bold  mb-4 uppercase ">
+              {status}
+            </h3>
+            <div className="space-y-4">
+              {tasks
+                .filter((t) => t.status === status)
+                .map((task) => (
+                  <TaskCard key={task.id} task={task} onUpdate={refresh} />
+                ))}
+            </div>
+          </div>
+        ))}
+      </div>
 
       <PopUpWindow
         isOpen={isPopUpWindowOpen}
