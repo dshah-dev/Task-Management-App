@@ -1,7 +1,9 @@
 import React from "react";
 import api from "../../api";
+import Button from "../../components/Button";
 
-export default function TaskCard({ task, onUpdate }) {
+export default function TaskCard({ task, onUpdate,onEdit }) {
+    
   const moveTask = async (newStatus) => {
     await api.patch(`/tasks/${task.id}`, { status: newStatus });
     onUpdate();
@@ -43,6 +45,11 @@ export default function TaskCard({ task, onUpdate }) {
             Done
           </button>
         )}
+        <div>
+          <Button variant="update" onClick={() => onEdit(task)}>
+            Update
+          </Button>
+        </div>
       </div>
     </div>
   );

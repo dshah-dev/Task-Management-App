@@ -4,17 +4,27 @@ import api from "../../api";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 
-function TaskForm({ onSuccess }) {
+function TaskForm({ onSuccess, initialData }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: initialData,
+  });
 
   const onSubmit = async (data) => {
-    const newTask = { ...data, status: "todo" };
-    await api.post("/tasks", newTask);
-    onSuccess();
+    try {
+      if (initialData) {
+        await api.patch(`/tasks/${initialData.id}`, data);
+      } else {
+        const newTask = { ...data, status: "todo" };
+        await api.post("/tasks", newTask);
+      }
+      onSuccess();
+    } catch (err) {
+      console.error("Saveing data Error:", err);
+    }
   };
 
   return (
@@ -43,7 +53,7 @@ function TaskForm({ onSuccess }) {
         {...register("dueDate", { required: "Date is required" })}
         error={errors.dueDate?.message}
       />
-      <Button type="submit">Create Task</Button>
+      <Button type="submit">{initialData ? "Save Changes" : "Create Task"}</Button>
     </form>
   );
 }

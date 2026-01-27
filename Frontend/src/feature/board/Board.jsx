@@ -10,6 +10,12 @@ function Board() {
   const { tasks, loading, error, refresh } = useTasks();
   const { logout } = useAuth();
   const [isPopUpWindowOpen, setIsPopUpWindowOpen] = useState(false);
+  const [taskToEdit, setTaskToEdit] = useState(null);
+
+  const handleEditClick = (task) => {
+    setTaskToEdit(task);
+    setIsPopUpWindowOpen(true);
+  };
 
   if (loading) return <div className="p-10">Loading...</div>;
   if (error) return <div className="p-10 text-red-500">{error}</div>;
@@ -34,14 +40,17 @@ function Board() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {statuses.map((status) => (
           <div key={status} className="bg-gray-200 p-4 rounded-lg">
-            <h3 className="font-bold  mb-4 uppercase ">
-              {status}
-            </h3>
+            <h3 className="font-bold  mb-4 uppercase ">{status}</h3>
             <div className="space-y-4">
               {tasks
                 .filter((t) => t.status === status)
                 .map((task) => (
-                  <TaskCard key={task.id} task={task} onUpdate={refresh} />
+                  <TaskCard
+                    key={task.id}
+                    task={task}
+                    onUpdate={refresh}
+                    onEdit={handleEditClick}
+                  />
                 ))}
             </div>
           </div>
@@ -50,10 +59,11 @@ function Board() {
 
       <PopUpWindow
         isOpen={isPopUpWindowOpen}
-        onClose={() => setIsPopUpWindowOpen(false)}
-        title="Add New Task"
+        onClose={() => setIsPopUpWindowOpen(false) && setTaskToEdit(null)}
+        title={taskToEdit ? "Edit Task" : "Add New Task"}
       >
         <TaskForm
+          initialData={taskToEdit}
           onSuccess={() => {
             setIsPopUpWindowOpen(false);
             refresh();
