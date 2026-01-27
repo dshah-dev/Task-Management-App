@@ -1,30 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../api";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import { useSaveTask } from "../../hooks/useSaveTask";
 
 function TaskForm({ onSuccess, initialData }) {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: initialData,
   });
 
+  const { saveTask, isSaving } = useSaveTask(onSuccess);
+
+  useEffect(() => {
+    reset(initialData || { title: "", Name: "", priority: "low", dueDate: "" });
+  }, [initialData, reset]);
+
   const onSubmit = async (data) => {
-    try {
-      if (initialData) {
-        await api.patch(`/tasks/${initialData.id}`, data);
-      } else {
-        const newTask = { ...data, status: "todo" };
-        await api.post("/tasks", newTask);
-      }
-      onSuccess();
-    } catch (err) {
-      console.error("Saveing data Error:", err);
-    }
+    saveTask(data, initialData);
   };
 
   return (
@@ -53,7 +51,9 @@ function TaskForm({ onSuccess, initialData }) {
         {...register("dueDate", { required: "Date is required" })}
         error={errors.dueDate?.message}
       />
-      <Button type="submit">{initialData ? "Save Changes" : "Create Task"}</Button>
+      <Button type="submit" disabled={isSaving}>
+        {isSaving ? "Saving..." : initialData ? "Save Changes" : "Create Task"}
+      </Button>
     </form>
   );
 }
