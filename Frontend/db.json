@@ -25,20 +25,12 @@
       "status": "todo"
     },
     {
-      "id": "6edf",
-      "title": "Now working ",
-      "Name": "Name is printing",
-      "priority": "medium",
-      "dueDate": "2026-01-26",
-      "status": "in-progress"
-    },
-    {
       "id": "2289",
       "title": "Done updated",
       "Name": "Naming",
       "priority": "low",
       "dueDate": "2026-01-28",
-      "status": "todo"
+      "status": "done"
     },
     {
       "id": "65d5",
@@ -54,13 +46,21 @@
       "Name": "Dhaval",
       "priority": "low",
       "dueDate": "2026-01-27",
-      "status": "done"
+      "status": "todo"
     },
     {
       "id": "9c2b",
       "title": "Update button working",
       "Name": "Update",
       "priority": "medium",
+      "dueDate": "2026-01-27",
+      "status": "in-progress"
+    },
+    {
+      "id": "3bf7",
+      "title": "New Updatee",
+      "Name": "anchal",
+      "priority": "low",
       "dueDate": "2026-01-27",
       "status": "in-progress"
     }

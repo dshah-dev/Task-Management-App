@@ -9,12 +9,18 @@ import Button from "../../components/Button";
 function Board() {
   const { tasks, loading, error, refresh } = useTasks();
   const { logout } = useAuth();
+
   const [isPopUpWindowOpen, setIsPopUpWindowOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
 
   const handleEditClick = (task) => {
     setTaskToEdit(task);
     setIsPopUpWindowOpen(true);
+  };
+
+  const closePopUpWindow = () => {
+    setIsPopUpWindowOpen(false);
+    setTaskToEdit(null); 
   };
 
   if (loading) return <div className="p-10">Loading...</div>;
@@ -59,13 +65,14 @@ function Board() {
 
       <PopUpWindow
         isOpen={isPopUpWindowOpen}
-        onClose={() => setIsPopUpWindowOpen(false) && setTaskToEdit(null)}
+        onClose={closePopUpWindow}
+        // onClose={() => setIsPopUpWindowOpen(false) && setTaskToEdit(null)}
         title={taskToEdit ? "Edit Task" : "Add New Task"}
       >
         <TaskForm
           initialData={taskToEdit}
           onSuccess={() => {
-            setIsPopUpWindowOpen(false);
+            closePopUpWindow();
             refresh();
           }}
         />
