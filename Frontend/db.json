@@ -6,11 +6,11 @@
       "Name": "Dhaval",
       "priority": "low",
       "dueDate": "2026-01-07",
-      "status": "in-progress"
+      "status": "done"
     },
     {
       "id": "ce29",
-      "title": "Reset Jeson Done",
+      "title": "Reset JSON file Done",
       "Name": "React",
       "priority": "high",
       "dueDate": "2026-01-15",
@@ -22,7 +22,7 @@
       "Name": "Anchal",
       "priority": "high",
       "dueDate": "2026-01-26",
-      "status": "done"
+      "status": "todo"
     },
     {
       "id": "6edf",
@@ -34,11 +34,11 @@
     },
     {
       "id": "2289",
-      "title": "Done",
-      "Name": "naming",
+      "title": "Done updated",
+      "Name": "Naming",
       "priority": "low",
       "dueDate": "2026-01-28",
-      "status": "done"
+      "status": "todo"
     },
     {
       "id": "65d5",
@@ -46,7 +46,23 @@
       "Name": "Dhaval",
       "priority": "low",
       "dueDate": "2026-01-26",
-      "status": "todo"
+      "status": "done"
+    },
+    {
+      "id": "7379",
+      "title": "new task",
+      "Name": "Dhaval",
+      "priority": "low",
+      "dueDate": "2026-01-27",
+      "status": "done"
+    },
+    {
+      "id": "9c2b",
+      "title": "Update button working",
+      "Name": "Update",
+      "priority": "medium",
+      "dueDate": "2026-01-27",
+      "status": "in-progress"
     }
   ]
 }

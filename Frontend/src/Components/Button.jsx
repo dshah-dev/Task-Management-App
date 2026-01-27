@@ -1,10 +1,12 @@
 import React from "react";
 
 function Button({ children, onClick, type = "button", variant = "primary" }) {
-  const styles =
+  const styles = 
     variant === "primary"
       ? "bg-blue-400 text-white hover:bg-blue-500"
-      : "bg-gray-200 text-gray-800 hover:bg-gray-300";
+      : variant === "update" 
+      ? "bg-green-400 hover:bg-green-500 text-sm "
+      :"bg-gray-200 text-gray-800 hover:bg-gray-300";
 
   return (
     <button
