@@ -14,7 +14,7 @@
       "Name": "React",
       "priority": "high",
       "dueDate": "2026-01-15",
-      "status": "in-progress"
+      "status": "todo"
     },
     {
       "id": "f43a",
@@ -46,22 +46,6 @@
       "Name": "Dhaval",
       "priority": "low",
       "dueDate": "2026-01-27",
-      "status": "done"
-    },
-    {
-      "id": "9c2b",
-      "title": "Update button working",
-      "Name": "Update",
-      "priority": "medium",
-      "dueDate": "2026-01-27",
-      "status": "in-progress"
-    },
-    {
-      "id": "3bf7",
-      "title": "New Updatee",
-      "Name": "anchal",
-      "priority": "low",
-      "dueDate": "2026-01-27",
       "status": "in-progress"
     },
     {
@@ -70,7 +54,7 @@
       "Name": "by adding",
       "priority": "low",
       "dueDate": "2026-01-12",
-      "status": "todo"
+      "status": "in-progress"
     }
   ]
 }
