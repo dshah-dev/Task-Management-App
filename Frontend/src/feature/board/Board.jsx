@@ -6,11 +6,13 @@ import PopUpWindow from "../../Components/PopUpWindow";
 import TaskForm from "../tasks/TaskForm";
 import Button from "../../components/Button";
 import { useDragAndDrop } from "../../hooks/useDargElements";
+import { useDeleteTask } from "../../hooks/useDeleteElements";
 
 function Board() {
   const { tasks, loading, error, refresh } = useTasks();
   const { logout } = useAuth();
   const { handleDragStart, handleDragOver, handleDrop } =useDragAndDrop(refresh);
+  const {deleteTask} = useDeleteTask(refresh);
 
   const [isPopUpWindowOpen, setIsPopUpWindowOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
@@ -64,6 +66,7 @@ function Board() {
                     onUpdate={refresh}
                     onEdit={handleEditClick}
                     onDragStart={(e)=> handleDragStart(e,task)}
+                    onDelete={deleteTask}
                   />
                 ))}
             </div>
