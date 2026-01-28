@@ -5,10 +5,12 @@ import TaskCard from "../tasks/TaskCard";
 import PopUpWindow from "../../Components/PopUpWindow";
 import TaskForm from "../tasks/TaskForm";
 import Button from "../../components/Button";
+import { useDragAndDrop } from "../../hooks/useDargElements";
 
 function Board() {
   const { tasks, loading, error, refresh } = useTasks();
   const { logout } = useAuth();
+  const { handleDragStart, handleDragOver, handleDrop } =useDragAndDrop(refresh);
 
   const [isPopUpWindowOpen, setIsPopUpWindowOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
@@ -20,7 +22,7 @@ function Board() {
 
   const closePopUpWindow = () => {
     setIsPopUpWindowOpen(false);
-    setTaskToEdit(null); 
+    setTaskToEdit(null);
   };
 
   if (loading) return <div className="p-10">Loading...</div>;
@@ -45,7 +47,12 @@ function Board() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {statuses.map((status) => (
-          <div key={status} className="bg-gray-200 p-4 rounded-lg">
+          <div
+            key={status}
+            className="bg-gray-200 p-4 rounded-lg"
+            onDragOver={handleDragOver}
+            onDrop={(e) => handleDrop(e, status)}
+          >
             <h3 className="font-bold  mb-4 uppercase ">{status}</h3>
             <div className="space-y-4">
               {tasks
@@ -56,6 +63,7 @@ function Board() {
                     task={task}
                     onUpdate={refresh}
                     onEdit={handleEditClick}
+                    onDragStart={(e)=> handleDragStart(e,task)}
                   />
                 ))}
             </div>
@@ -66,7 +74,7 @@ function Board() {
       <PopUpWindow
         isOpen={isPopUpWindowOpen}
         onClose={closePopUpWindow}
-        // onClose={() => setIsPopUpWindowOpen(false) && setTaskToEdit(null)}
+
         title={taskToEdit ? "Edit Task" : "Add New Task"}
       >
         <TaskForm

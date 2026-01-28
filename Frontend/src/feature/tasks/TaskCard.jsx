@@ -2,15 +2,18 @@ import React from "react";
 import api from "../../api";
 import Button from "../../components/Button";
 
-export default function TaskCard({ task, onUpdate,onEdit }) {
-    
+export default function TaskCard({ task, onUpdate, onEdit, onDragStart }) {
   const moveTask = async (newStatus) => {
     await api.patch(`/tasks/${task.id}`, { status: newStatus });
     onUpdate();
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow border border-gray-200">
+    <div
+      className="bg-white p-4 rounded shadow border border-gray-200"
+        draggable
+        onDragStart={onDragStart}
+    >
       <div className="flex justify-between items-start mb-2">
         <h4 className="font-bold text-gray-800">{task.title}</h4>
         <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded uppercase font-bold">
