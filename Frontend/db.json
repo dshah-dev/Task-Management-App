@@ -17,14 +17,6 @@
       "status": "todo"
     },
     {
-      "id": "f43a",
-      "title": "Error Solved",
-      "Name": "Anchal",
-      "priority": "high",
-      "dueDate": "2026-01-26",
-      "status": "todo"
-    },
-    {
       "id": "2289",
       "title": "Done updated",
       "Name": "Naming",
@@ -41,20 +33,28 @@
       "status": "done"
     },
     {
-      "id": "7379",
-      "title": "new task",
-      "Name": "Dhaval",
-      "priority": "low",
-      "dueDate": "2026-01-27",
-      "status": "in-progress"
-    },
-    {
       "id": "3fd2",
       "title": "Is it adding",
       "Name": "by adding",
       "priority": "low",
       "dueDate": "2026-01-12",
       "status": "in-progress"
+    },
+    {
+      "id": "8371",
+      "title": "controller implemented",
+      "Name": "by controller",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "status": "in-progress"
+    },
+    {
+      "id": "08a5",
+      "title": "All field working",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "Name": "By controller",
+      "status": "todo"
     }
   ]
 }
