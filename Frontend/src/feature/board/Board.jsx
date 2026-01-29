@@ -9,6 +9,7 @@ import { useDragAndDrop } from "../../hooks/useDargElements";
 import { useDeleteTask } from "../../hooks/useDeleteElements";
 import { useFilterTasks } from "../../hooks/useFilterTasks";
 import Input from "../../components/Input";
+import { useDebounce } from "../../hooks/useDebounce";
 
 function Board() {
   const { tasks, loading, error, refresh } = useTasks();
@@ -21,7 +22,8 @@ function Board() {
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [searchTask, setSearchTask] = useState("");
 
-  const filteredTasks = useFilterTasks(tasks, searchTask);
+  const debouncedTasks = useDebounce(searchTask);
+  const filteredTasks = useFilterTasks(tasks, debouncedTasks);
 
   const handleEditClick = (task) => {
     setTaskToEdit(task);
@@ -51,8 +53,7 @@ function Board() {
             onChange={(e) => setSearchTask(e.target.value)}
           />
         </div>
-        <div className="flex gap-4 overflow-x-auto pb-4">
-      </div>
+        <div className="flex gap-4 overflow-x-auto pb-4"></div>
         <div className="flex gap-4">
           <Button onClick={() => setIsPopUpWindowOpen(true)}>Add Task</Button>
           <button
