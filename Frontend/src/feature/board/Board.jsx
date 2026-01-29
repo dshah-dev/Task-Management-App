@@ -7,15 +7,21 @@ import TaskForm from "../tasks/TaskForm";
 import Button from "../../components/Button";
 import { useDragAndDrop } from "../../hooks/useDargElements";
 import { useDeleteTask } from "../../hooks/useDeleteElements";
+import { useFilterTasks } from "../../hooks/useFilterTasks";
+import Input from "../../components/Input";
 
 function Board() {
   const { tasks, loading, error, refresh } = useTasks();
   const { logout } = useAuth();
-  const { handleDragStart, handleDragOver, handleDrop } =useDragAndDrop(refresh);
-  const {deleteTask} = useDeleteTask(refresh);
+  const { handleDragStart, handleDragOver, handleDrop } =
+    useDragAndDrop(refresh);
+  const { deleteTask } = useDeleteTask(refresh);
 
   const [isPopUpWindowOpen, setIsPopUpWindowOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
+  const [searchTask, setSearchTask] = useState("");
+
+  const filteredTasks = useFilterTasks(tasks, searchTask);
 
   const handleEditClick = (task) => {
     setTaskToEdit(task);
@@ -36,6 +42,17 @@ function Board() {
     <div className="min-h-screen bg-gray-50 p-6">
       <header className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-black">Task Management App</h1>
+        <div>
+          <Input
+            type="text"
+            placeholder="Search tasks or names..."
+            variant="searchBar"
+            value={searchTask}
+            onChange={(e) => setSearchTask(e.target.value)}
+          />
+        </div>
+        <div className="flex gap-4 overflow-x-auto pb-4">
+      </div>
         <div className="flex gap-4">
           <Button onClick={() => setIsPopUpWindowOpen(true)}>Add Task</Button>
           <button
@@ -57,7 +74,7 @@ function Board() {
           >
             <h3 className="font-bold  mb-4 uppercase ">{status}</h3>
             <div className="space-y-4">
-              {tasks
+              {filteredTasks
                 .filter((t) => t.status === status)
                 .map((task) => (
                   <TaskCard
@@ -65,7 +82,7 @@ function Board() {
                     task={task}
                     onUpdate={refresh}
                     onEdit={handleEditClick}
-                    onDragStart={(e)=> handleDragStart(e,task)}
+                    onDragStart={(e) => handleDragStart(e, task)}
                     onDelete={deleteTask}
                   />
                 ))}
@@ -77,7 +94,6 @@ function Board() {
       <PopUpWindow
         isOpen={isPopUpWindowOpen}
         onClose={closePopUpWindow}
-
         title={taskToEdit ? "Edit Task" : "Add New Task"}
       >
         <TaskForm
