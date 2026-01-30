@@ -1,3 +1,7 @@
+
+// NOT IN USE ANYMORE , USING REDUX TOOLKIT FOR AUTHENTICATION 
+
+
 import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
