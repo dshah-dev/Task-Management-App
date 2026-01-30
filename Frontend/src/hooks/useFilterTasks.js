@@ -3,7 +3,7 @@ import { useMemo } from "react";
 export const useFilterTasks = (tasks, searchTask) => {
   const filteredTasks = useMemo(() => {
     if (!searchTask) return tasks;
-
+    
     const lowerSearch = searchTask.toLowerCase();
 
     return tasks.filter((task) => {

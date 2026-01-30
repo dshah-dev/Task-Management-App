@@ -1,21 +1,29 @@
 import { useForm } from "react-hook-form";
-import { useAuth } from "../context/AuthContext";
+// import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Input from "../components/Input";
-import Button from "../components/Button";
+// import Input from "../../components/Input";
+import Button from "../../components/Button";
+import { useDispatch } from "react-redux";
+import { adduser } from "../../redux/authSlice";
+import DynamicFormController from "../../Components/custom-forms";
+import LOGIN_IN from "./constant/index";
 
 function LoginPage() {
   const {
-    register,
+    // register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-  const { login } = useAuth();
+
+  // const { login } = useAuth();                 //using redux insted of it
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
     await new Promise((res) => setTimeout(res, 1500));
-    login();
+    // login();
+    dispatch(adduser({ email: data.email }));
     navigate("/dashboard");
   };
 
@@ -26,7 +34,13 @@ function LoginPage() {
         className="bg-white p-8 rounded-lg shadow-md w-100"
       >
         <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
-        <Input
+
+        <DynamicFormController
+          control={control}
+          config={LOGIN_IN}
+          errors={errors}
+        />
+        {/* <Input
           label="Email"
           type="email"
           {...register("email", { required: "Email required" })}
@@ -37,7 +51,8 @@ function LoginPage() {
           type="password"
           {...register("password", { required: "Password required" })}
           error={errors.password?.message}
-        />
+        /> */}
+
         <Button type="submit" disabled={isSubmitting}>
           {" "}
           {isSubmitting ? "Login, Please Wait." : "Login"}

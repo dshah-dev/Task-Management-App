@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTasks } from "../../hooks/useTasks";
-import { useAuth } from "../../context/AuthContext";
-import TaskCard from "../tasks/TaskCard";
+// import { useAuth } from "../../context/AuthContext";
+import TaskCard from "../tasksCard/TaskCard";
 import PopUpWindow from "../../Components/PopUpWindow";
-import TaskForm from "../tasks/TaskForm";
+import TaskForm from "../TaskForm/TaskForm";
 import Button from "../../components/Button";
 import { useDragAndDrop } from "../../hooks/useDargElements";
 import { useDeleteTask } from "../../hooks/useDeleteElements";
 import { useFilterTasks } from "../../hooks/useFilterTasks";
 import Input from "../../components/Input";
 import { useDebounce } from "../../hooks/useDebounce";
+import { useSelector ,useDispatch } from "react-redux";
+import { removeuser } from "../../redux/authSlice";
+import { useNavigate } from "react-router-dom";
 
 function Board() {
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, [currentUser, navigate]);
+  
+  const handleLogout = () => {
+    dispatch(removeuser()); 
+    navigate("/login");
+  };
+
   const { tasks, loading, error, refresh } = useTasks();
-  const { logout } = useAuth();
+  // const { logout } = useAuth(); 
   const { handleDragStart, handleDragOver, handleDrop } =
     useDragAndDrop(refresh);
   const { deleteTask } = useDeleteTask(refresh);
@@ -22,7 +40,7 @@ function Board() {
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [searchTask, setSearchTask] = useState("");
 
-  const debouncedTasks = useDebounce(searchTask);
+  const debouncedTasks = useDebounce(searchTask,1000);
   const filteredTasks = useFilterTasks(tasks, debouncedTasks);
 
   const handleEditClick = (task) => {
@@ -57,7 +75,8 @@ function Board() {
         <div className="flex gap-4">
           <Button onClick={() => setIsPopUpWindowOpen(true)}>Add Task</Button>
           <button
-            onClick={logout}
+            // onClick={logout}
+            onClick={handleLogout}
             className="border rounded-lg px-2 border-white shadow-lg hover:bg-red-300"
           >
             Logout
