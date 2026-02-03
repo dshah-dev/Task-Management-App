@@ -1,22 +1,14 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-// nanoid : it just genrate a unique id .
 
 const savedUser = JSON.parse(localStorage.getItem("currentUser"));
 
 const initialState = {
-//   users: [{ id: "1", email: "a@gmail.com", password: "123456" }],
     currentUser:savedUser|| null,
 };
 
 function addingUser(state, action) {
-  const user = {
-    id: nanoid(),
-    email: action.payload,
-  };
-  state.currentUser = user;
-//   state.users.push(user);
-  localStorage.setItem("currentUser", JSON.stringify(user));
-  console.log("user added.");
+  state.currentUser = action.payload;
+  localStorage.setItem("currentUser", JSON.stringify(action.payload));
 }
 
 export const authSlice = createSlice({                           
@@ -25,7 +17,6 @@ export const authSlice = createSlice({
   reducers: {                                                  // it include properties and actions
     adduser: addingUser,
     removeuser: (state, action) => {                            // Always take two parameters state , action
-        // state.users = state.users.filter((user) => user.id !== action.payload);
         state.currentUser = null;
         localStorage.removeItem("currentUser");
     },

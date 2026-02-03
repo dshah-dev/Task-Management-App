@@ -1,6 +1,6 @@
 import React from "react";
-import api from "../../api";
-import Button from "../../components/Button";
+import api from "../../utils/api";
+import Button from "../../common/components/Button";
 
 export default function TaskCard({ task, onUpdate, onEdit, onDragStart , onDelete}) {
   const moveTask = async (newStatus) => {

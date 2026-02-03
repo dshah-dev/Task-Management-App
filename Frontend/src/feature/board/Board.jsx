@@ -1,37 +1,31 @@
 import { useEffect, useState } from "react";
-import { useTasks } from "../../hooks/useTasks";
-// import { useAuth } from "../../context/AuthContext";
+import { useTasks } from "../../common/hooks/useTasks";
 import TaskCard from "../tasksCard/TaskCard";
-import PopUpWindow from "../../Components/PopUpWindow";
+import PopUpWindow from "../../common/components/PopUpWindow";
 import TaskForm from "../TaskForm/TaskForm";
-import Button from "../../components/Button";
-import { useDragAndDrop } from "../../hooks/useDargElements";
-import { useDeleteTask } from "../../hooks/useDeleteElements";
-import { useFilterTasks } from "../../hooks/useFilterTasks";
-import Input from "../../components/Input";
-import { useDebounce } from "../../hooks/useDebounce";
-import { useSelector ,useDispatch } from "react-redux";
-import { removeuser } from "../../redux/authSlice";
+import { useDragAndDrop } from "../../common/hooks/useDargElements";
+import { useDeleteTask } from "../../common/hooks/useDeleteElements";
+import { useFilterTasks } from "../../common/hooks/useFilterTasks";
+import { useDebounce } from "../../common/hooks/useDebounce";
+import { useSelector ,useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../common/components/Navbar";
+import ProfilePage from "../profilePage/profilePage";
+import { closeAuthState } from "../../redux/authStateManageSlice";
 
 function Board() {
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (!currentUser) {
-      navigate("/login");
+      navigate("/");
     }
   }, [currentUser, navigate]);
   
-  const handleLogout = () => {
-    dispatch(removeuser()); 
-    navigate("/login");
-  };
-
+  const dispatch=useDispatch()
+  const { isOpen ,mode} = useSelector((state) => state.authState);
   const { tasks, loading, error, refresh } = useTasks();
-  // const { logout } = useAuth(); 
   const { handleDragStart, handleDragOver, handleDrop } =
     useDragAndDrop(refresh);
   const { deleteTask } = useDeleteTask(refresh);
@@ -40,7 +34,7 @@ function Board() {
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [searchTask, setSearchTask] = useState("");
 
-  const debouncedTasks = useDebounce(searchTask,1000);
+  const debouncedTasks = useDebounce(searchTask, 1000);
   const filteredTasks = useFilterTasks(tasks, debouncedTasks);
 
   const handleEditClick = (task) => {
@@ -60,30 +54,11 @@ function Board() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
-      <header className="flex justify-between items-center mb-8">
-        <h1 className="text-2xl font-bold text-black">Task Management App</h1>
-        <div>
-          <Input
-            type="text"
-            placeholder="Search tasks or names..."
-            variant="searchBar"
-            value={searchTask}
-            onChange={(e) => setSearchTask(e.target.value)}
-          />
-        </div>
-        <div className="flex gap-4 overflow-x-auto pb-4"></div>
-        <div className="flex gap-4">
-          <Button onClick={() => setIsPopUpWindowOpen(true)}>Add Task</Button>
-          <button
-            // onClick={logout}
-            onClick={handleLogout}
-            className="border rounded-lg px-2 border-white shadow-lg hover:bg-red-300"
-          >
-            Logout
-          </button>
-        </div>
-      </header>
-
+      <Navbar
+        searchTask={searchTask}
+        setSearchTask={setSearchTask}
+        onAddTaskClick={() => setIsPopUpWindowOpen(true)}
+      />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {statuses.map((status) => (
           <div
@@ -115,6 +90,7 @@ function Board() {
         isOpen={isPopUpWindowOpen}
         onClose={closePopUpWindow}
         title={taskToEdit ? "Edit Task" : "Add New Task"}
+        variant="primary"
       >
         <TaskForm
           initialData={taskToEdit}
@@ -123,6 +99,14 @@ function Board() {
             refresh();
           }}
         />
+      </PopUpWindow>
+
+      <PopUpWindow
+        isOpen={isOpen}
+        onClose={() => dispatch(closeAuthState())}
+        variant="auth"
+      >
+        {mode === "profile" ?<ProfilePage />:""}
       </PopUpWindow>
     </div>
   );

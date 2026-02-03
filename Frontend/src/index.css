@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme{
+    /* for color */
+    --color-theme:#200B33;
+    --color-light-purple:#420356;
+    --color-hover-purple:#6B0C91;
+    --color-input-bg:#2C0E48;
+    --color-input-border:#FFFFFF61;
+    --color-gold:#EAB308;
+
+    /* for gradient colors  */
+    /* --bg-tanish::after */
+    /* for shadow  */
+    /* --shadow-tanish */
+}
