@@ -10,20 +10,20 @@ export default function TaskCard({ task, onUpdate, onEdit, onDragStart , onDelet
 
   return (
     <div
-      className="bg-white p-4 rounded shadow border border-gray-200"
+      className="bg-white p-4 rounded shadow-sm border border-gray-200"
         draggable
         onDragStart={onDragStart}
     >
       <div className="flex justify-between items-start mb-2">
-        <h4 className="font-bold text-gray-800">{task.title}</h4>
-        <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded uppercase font-bold">
+        <h4 className="font-semibold text-gray-800">{task.title}</h4>
+        <span className="text-[11px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded uppercase font-bold">
           {task.priority}
         </span>
       </div>
-      <p className="text-xs text-gray-500 mb-4">
+      <p className="text-xs font-medium text-gray-600 mb-4">
         name: {task.Name} | Due Date: {task.dueDate}
       </p>
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-wrap items-center">
         {task.status !== "todo" && (
           <button
             onClick={() => moveTask("todo")}

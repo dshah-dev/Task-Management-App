@@ -13,4 +13,26 @@
     /* --bg-tanish::after */
     /* for shadow  */
     /* --shadow-tanish */
+
+
+    /* customize inbuilt breakpoints */
+    /* --breakpoint-sm:700px; */
+}
+
+
+@layer{
+    /* .btn-primary{
+        @apply 
+    } */
+
+
+    /* h1{
+        font-size: 99px;
+    }
+    button{
+        ...
+    } */
+    /* ng-black{
+        @apply{ bg-black}
+    } */
 }

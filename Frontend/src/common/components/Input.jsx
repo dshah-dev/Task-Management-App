@@ -7,7 +7,7 @@ function Input({ variant = "primary", label, error, ...props }) {
       label: "text-black"
     },
     searchBar: {
-      input: "p-2 border rounded-lg w-full min-w-lg shadow-md",
+      input: "p-2 border rounded-lg w-full shadow-md",
     },
     auth: {
       input: "w-full bg-input-bg rounded-lg border-input-border border-[1.15px] px-4 py-2 text-white outline-none focus:border-gold focus:ring-0",

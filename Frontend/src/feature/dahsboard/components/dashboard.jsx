@@ -13,8 +13,8 @@ function Dashboard() {
     <div className="min-h-screen bg-theme">
       <Navbar />
 
-      <div className="flex flex-col items-center justify-center h-[70vh] text-center px-4">
-        <h1 className="text-5xl font-bold text-white mb-4">
+      <div className="flex flex-col items-center justify-center h-[80vh] text-center px-4 ">
+        <h1 className="sm:text-5xl text-3xl font-bold text-white">
           Welcome to Task Management App
         </h1>
       </div>
