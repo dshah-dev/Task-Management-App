@@ -6,7 +6,7 @@
       "Name": "Dhaval",
       "priority": "low",
       "dueDate": "2026-01-07",
-      "status": "done"
+      "status": "todo"
     },
     {
       "id": "ce29",
@@ -38,7 +38,7 @@
       "Name": "by adding",
       "priority": "low",
       "dueDate": "2026-01-12",
-      "status": "todo"
+      "status": "done"
     },
     {
       "id": "8371",

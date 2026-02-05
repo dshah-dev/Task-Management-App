@@ -53,7 +53,7 @@ function Board() {
   const statuses = ["todo", "in-progress", "done"];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-5">
       <Navbar
         searchTask={searchTask}
         setSearchTask={setSearchTask}
