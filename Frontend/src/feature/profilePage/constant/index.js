@@ -1,0 +1,60 @@
+export const PROFILE_CONFIG = [
+  {
+    name: "fullName",
+    label: "Full Name",
+    type: "text",
+    placeholder: "Enter full name",
+    variant: "auth",
+  },
+  {
+    name: "username",
+    label: "Username",
+    type: "text",
+    disabled: true,
+    variant: "auth",
+  },
+  {
+    name: "email",
+    label: "E-Mail ID",
+    type: "email",
+    placeholder: "Enter your email",
+    variant: "auth",
+  },
+  {
+    name: "phone_no",
+    label: "Phone No.",
+    type: "text",
+    variant: "auth",
+  },
+  {
+    name: "gender",
+    label: "Gender",
+    type: "select",
+    options: ["Male", "Female", "Other"],
+    variant: "auth",
+  },
+  {
+    name: "dob",
+    label: "Date of Birth",
+    type: "date",
+    variant: "auth",
+  },
+  {
+    name: "street",
+    label: "Address",
+    type: "text",
+    variant: "auth",
+  },
+  {
+    name: "state",
+    label: "State",
+    type: "text",
+    variant: "auth",
+  },
+  {
+    name: "zip",
+    label: "Zip Code",
+    type: "text",
+    variant: "auth",
+  },
+];

@@ -1,13 +1,23 @@
 import React from "react";
 import { Controller } from "react-hook-form";
 import Input from "./Input";
+import Select from "./select";
+import DateInput from "./DateInput";
 
 const DynamicFormController = ({ control, config, errors }) => {
   return (
     <>
       {config.map((item) => {
-        const { name, label, type, rules, placeholder, className, options } =
-          item;
+        const {
+          name,
+          label,
+          type,
+          rules,
+          placeholder,
+          className,
+          options,
+          variant,
+        } = item;
 
         return (
           <Controller
@@ -19,24 +29,29 @@ const DynamicFormController = ({ control, config, errors }) => {
               if (type === "select") {
                 return (
                   <div className={`mb-4 text-left ${className || ""}`}>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {label}
-                    </label>
-                    <select
+                    <Select
                       {...field}
-                      className={`w-full border rounded p-2 focus:ring-2 focus:ring-blue-400 outline-none`}
-                    >
-                      <option value="">Select {label}</option>
-                      {options?.map((opt) => (
-                        <option key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </option>
-                      ))}
-                    </select>
+                      label={label}
+                      options={options}
+                      variant={variant || "primary"}
+                      error={errors[name]?.message}
+                    />
                   </div>
                 );
               }
-
+              if (type === "date") {
+                return (
+                  <div className={`mb-4 text-left ${className || ""}`}>
+                    <DateInput
+                      {...field}
+                      label={label}
+                      value={field.value || ""}
+                      error={errors[name]?.message}
+                      variant={variant || "primary"}
+                    />
+                  </div>
+                );
+              }
               return (
                 <div className={`mb-4 text-left relative ${className || ""}`}>
                   <Input
@@ -44,6 +59,7 @@ const DynamicFormController = ({ control, config, errors }) => {
                     label={label}
                     type={type}
                     placeholder={placeholder}
+                    variant={variant || "primary"}
                     value={field.value || ""}
                     error={errors[name]?.message}
                   />

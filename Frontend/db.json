@@ -38,7 +38,7 @@
       "Name": "by adding",
       "priority": "low",
       "dueDate": "2026-01-12",
-      "status": "in-progress"
+      "status": "todo"
     },
     {
       "id": "8371",
@@ -62,7 +62,68 @@
       "Name": "Controller",
       "priority": "medium",
       "dueDate": "2026-12-31",
-      "status": "todo"
+      "status": "in-progress"
+    }
+  ],
+  "users": [
+    {
+      "id": "qKgIvaPG5MlYIYgGbpIot",
+      "fullName": "changed",
+      "email": "d@gmail.com",
+      "password": "123456",
+      "username": "my name changed",
+      "phone_no": "7777777788",
+      "gender": "",
+      "dob": "2026-02-03",
+      "street": "qd dqll",
+      "state": "sefqef",
+      "zip": "sfvdsv"
+    },
+    {
+      "id": "CYYHQtW2qhZsmqMtdEAQ-",
+      "fullName": "Dhaval Shah",
+      "email": "dhaval1504shah@gmail.com",
+      "password": "123456",
+      "address": {}
+    },
+    {
+      "id": "HRDF9UnxgDx8lWDxDQxTF",
+      "fullName": "Anshul",
+      "email": "aa@gmail.com",
+      "password": "123",
+      "username": "Ansh_123",
+      "phone_no": "789654123",
+      "gender": "Male",
+      "dob": "2026-02-03",
+      "street": "indore",
+      "state": "mp",
+      "zip": "121212"
+    },
+    {
+      "id": "ccdNdG8Y6PadABlM7THGe",
+      "username": "version3",
+      "email": "v@gmail.com",
+      "password": "123",
+      "phone_no": "",
+      "fullName": "",
+      "gender": "",
+      "dob": "2026-02-03",
+      "street": "aa",
+      "state": "aa",
+      "zip": ""
+    },
+    {
+      "id": "JzaLh1FqmnY2JyiwpiRep",
+      "username": "final check",
+      "email": "f@gmail.com",
+      "password": "123",
+      "phone_no": "123456779",
+      "fullName": "abc",
+      "gender": "Male",
+      "dob": "2026-02-03",
+      "street": "extra ",
+      "state": "extra",
+      "zip": "extra"
     }
   ]
 }
