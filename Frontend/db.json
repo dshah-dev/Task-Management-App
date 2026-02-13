@@ -1,28 +1,12 @@
 {
   "tasks": [
     {
-      "id": "36a8",
-      "title": "Completed ",
-      "Name": "Dhaval",
-      "priority": "low",
-      "dueDate": "2026-01-07",
-      "status": "todo"
-    },
-    {
-      "id": "ce29",
-      "title": "Reset JSON file Done",
-      "Name": "React",
-      "priority": "high",
-      "dueDate": "2026-01-15",
-      "status": "in-progress"
-    },
-    {
       "id": "2289",
       "title": "Done updated",
       "Name": "Naming",
-      "priority": "low",
+      "priority": "medium",
       "dueDate": "2026-01-28",
-      "status": "done"
+      "status": "in-progress"
     },
     {
       "id": "65d5",
@@ -36,7 +20,7 @@
       "id": "3fd2",
       "title": "Is it adding",
       "Name": "by adding",
-      "priority": "low",
+      "priority": "medium",
       "dueDate": "2026-01-12",
       "status": "done"
     },
@@ -46,23 +30,55 @@
       "Name": "by controller",
       "priority": "medium",
       "dueDate": "2026-12-31",
-      "status": "todo"
-    },
-    {
-      "id": "08a5",
-      "title": "All field working",
-      "priority": "medium",
-      "dueDate": "2026-12-31",
-      "Name": "By controller",
       "status": "in-progress"
     },
     {
-      "id": "0040",
+      "id": "0051",
       "title": " new version2.0",
       "Name": "Controller",
       "priority": "medium",
       "dueDate": "2026-12-31",
-      "status": "in-progress"
+      "status": "done"
+    },
+    {
+      "id": "0045",
+      "title": " new version2.0",
+      "Name": "Controller",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "status": "todo"
+    },
+    {
+      "id": "0044",
+      "title": " new version2.0",
+      "Name": "Controller",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "status": "todo"
+    },
+    {
+      "id": "0043",
+      "title": " new version2.0",
+      "Name": "Controller",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "status": "todo"
+    },
+    {
+      "id": "0042",
+      "title": " new version2.0",
+      "Name": "Controller",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "status": "todo"
+    },
+    {
+      "id": "0041",
+      "title": " new version2.0",
+      "Name": "Controller",
+      "priority": "medium",
+      "dueDate": "2026-12-31",
+      "status": "todo"
     }
   ],
   "users": [
@@ -88,16 +104,16 @@
     },
     {
       "id": "HRDF9UnxgDx8lWDxDQxTF",
-      "fullName": "Anshul",
+      "fullName": "Dhaval ",
       "email": "aa@gmail.com",
       "password": "123",
-      "username": "Ansh_123",
+      "username": "Ansh_123 ",
       "phone_no": "789654123",
       "gender": "Male",
       "dob": "2026-02-03",
       "street": "indore",
       "state": "mp",
-      "zip": "121212"
+      "zip": "121212 "
     },
     {
       "id": "ccdNdG8Y6PadABlM7THGe",
@@ -124,6 +140,21 @@
       "street": "extra ",
       "state": "extra",
       "zip": "extra"
+    },
+    {
+      "id": "9k5moiJl483vpjlwRB-BU",
+      "username": "text",
+      "email": "t@gmail.com",
+      "password": "123",
+      "phone_no": "1234567890",
+      "fullName": "Master-text"
+    },
+    {
+      "id": "FPlYJFH5swlJpTHbTvf5-",
+      "username": "new3.0",
+      "email": "n@gmail.com",
+      "password": "123",
+      "phone_no": "123456789"
     }
   ]
 }

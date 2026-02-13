@@ -8,6 +8,10 @@ function DateInput({ label, variant = "primary", error, value, onChange, name, .
       ? "bg-white border-gray-300 text-gray-900 focus:ring-blue-400 rounded-md"
       : "bg-gray-100 border-transparent text-gray-800";
 
+  const iconStyles = variant === "auth" 
+    ? "[&::-webkit-calendar-picker-indicator]:filter [&::-webkit-calendar-picker-indicator]:invert" 
+    : "";
+    
   return (
     <div className="w-full text-left">
       {label && (
@@ -21,7 +25,7 @@ function DateInput({ label, variant = "primary", error, value, onChange, name, .
         name={name}
         value={value || ""}
         onChange={onChange}
-        className={`${styles} w-full border p-2.5 outline-none shadow-sm focus:ring-2 block `}
+        className={`${styles} ${iconStyles} w-full border p-2.5 outline-none shadow-sm focus:ring-2 block `}
         {...props}
       />     
       {error && <p className="text-red-500 text-[10px] mt-1">{error}</p>}

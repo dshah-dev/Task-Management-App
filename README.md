@@ -5,8 +5,9 @@ npm i axios react-router-dom @reduxjs/toolkit react-redux redux-persist react-ic
 npm install socket.io-client
 npm install react-hook-form lucide-react
 npm install json-server
-npx json-server --watch db.json --port 5000
+npm i react-hot-toast
 
+npx json-server --watch db.json --port 5000
 npm install -D sass-embedded
 
 npx shadcn@latest init
