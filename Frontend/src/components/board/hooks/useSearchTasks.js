@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
-export const useFilterTasks = (tasks, searchTask) => {
-  const filteredTasks = useMemo(() => {
+export const useSearchTasks = (tasks, searchTask) => {
+  const searchedTasks = useMemo(() => {
     if (!searchTask) return tasks;
     
     const lowerSearch = searchTask.toLowerCase();
@@ -14,5 +14,5 @@ export const useFilterTasks = (tasks, searchTask) => {
     });
   }, [tasks, searchTask]);
 
-  return filteredTasks;
+  return searchedTasks;
 };

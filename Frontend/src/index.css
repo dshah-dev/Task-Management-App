@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme{
-    /* for color */
     --color-theme:#200B33;
+    --color-purple:#371650;
     --color-light-purple:#420356;
     --color-hover-purple:#6B0C91;
     --color-input-bg:#2C0E48;
@@ -10,29 +10,67 @@
     --color-gold:#EAB308;
 
     /* for gradient colors  */
-    /* --bg-tanish::after */
+    /* --bg-golden-border::after */
     /* for shadow  */
     /* --shadow-tanish */
-
 
     /* customize inbuilt breakpoints */
     /* --breakpoint-sm:700px; */
 }
 
 
-@layer{
-    /* .btn-primary{
-        @apply 
-    } */
-
-
-    /* h1{
-        font-size: 99px;
+@layer components{
+    .btn-base {
+        @apply py-2 px-4 font-semibold transition-all shadow-sm w-full;
     }
-    button{
-        ...
+    .btn-primary {
+        @apply bg-blue-400 text-white hover:bg-blue-500 rounded-md w-full;
+    }
+
+    /* .btn-update {
+        @apply bg-green-400 text-white hover:bg-green-500 text-sm rounded-md;
+    }
+
+    .btn-delete {
+        @apply bg-white text-red-500 text-sm hover:bg-red-500 hover:text-white rounded-md ;
     } */
-    /* ng-black{
-        @apply{ bg-black}
-    } */
+
+    .btn-auth {
+        @apply bg-light-purple text-white hover:bg-hover-purple shadow-lg rounded-md w-full;
+    }
+
+    .btn-profile {
+        @apply bg-light-purple text-gold hover:bg-hover-purple shadow-lg rounded-full w-50;
+    }
+
+    .golden-border {
+        @apply rounded-3xl border-[2.4px] border-transparent;
+            background:
+                linear-gradient(#420356) padding-box,
+                linear-gradient(90deg, #F2C21B , #C16B08 ) border-box;
+    }
+    .task-card-sigma {
+        @apply rounded-lg border border-white/20;
+        background: radial-gradient(
+            170% 170% at 42% -28%, 
+            #461446 0%, 
+            #2C063F 55%, 
+            #A419A7 100%
+        );
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .scrollbar-color::-webkit-scrollbar-thumb {
+    background-color: #200b33;
+    border-radius: 20px;
+  }
+
+  .undo {
+    position: "top-right";
+    background: "#6B0C91";
+    color: "#fff";
+    border: "1px solid #EAB308";
+  }
 }

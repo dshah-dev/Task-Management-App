@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller } from "react-hook-form";
 import Input from "./Input";
-import Select from "./select";
+import Select from "./Select";
 import DateInput from "./DateInput";
 
 const DynamicFormController = ({ control, config, errors }) => {
