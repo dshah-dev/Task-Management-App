@@ -7,14 +7,36 @@ import UpperBoard from "./upper-board";
 import BoardSkeleton from "./skeleton";
 import { FaChevronDown } from "react-icons/fa";
 import { Toaster } from "react-hot-toast";
+import TaskCarousel from "./Carousel";
 
 function Board() {
   const {
-    loading, error, visibleTasks, searchTask, setSearchTask, priority, setPriority,
-    selectedTaskIds, collapsedColumns, isPopUpWindowOpen, taskToEdit, isOpen, mode,
-    refresh, handleDragStart, handleDragOver, handleDrop, toggleSelection,
-    bulkPriorityUpdate, deleteTaskWithUndo, handleBulkDeleteWithUndo,
-    handleEditClick, closePopUpWindow, setIsPopUpWindowOpen, toggleColumn, closeAuthModal
+    loading,
+    error,
+    visibleTasks,
+    searchTask,
+    setSearchTask,
+    priority,
+    setPriority,
+    selectedTaskIds,
+    collapsedColumns,
+    isPopUpWindowOpen,
+    taskToEdit,
+    isOpen,
+    mode,
+    refresh,
+    handleDragStart,
+    handleDragOver,
+    handleDrop,
+    toggleSelection,
+    bulkPriorityUpdate,
+    deleteTaskWithUndo,
+    handleBulkDeleteWithUndo,
+    handleEditClick,
+    closePopUpWindow,
+    setIsPopUpWindowOpen,
+    toggleColumn,
+    closeAuthModal,
   } = useBoardLogic();
 
   if (loading) return <BoardSkeleton />;
@@ -122,13 +144,21 @@ function Board() {
         />
       </PopUpWindow>
 
-      <PopUpWindow
-        isOpen={isOpen}
-        onClose={closeAuthModal}
-        variant="auth"
-      >
+      <PopUpWindow isOpen={isOpen} onClose={closeAuthModal} variant="auth">
         {mode === "profile" ? <ProfilePage /> : ""}
       </PopUpWindow>
+
+      <section className="mb-12">
+        <div className="flex items-center gap-2 mb-6 ml-10">
+          <span className="bg-gold h-4 w-1 rounded-full" />
+          <h2 className="text-white font-bold text-xl uppercase tracking-tighter">
+            Featured Tasks
+          </h2>
+        </div>
+
+        <TaskCarousel tasks={visibleTasks} />
+      </section>
+
     </div>
   );
 }

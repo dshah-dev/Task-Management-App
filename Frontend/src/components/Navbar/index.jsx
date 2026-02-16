@@ -21,7 +21,6 @@ function Navbar() {
   };
 
   return (
-    // <header className="bg-light-purple p-4 rounded-lg shadow-md flex justify-between w-full lg:w-auto">
     <header className="top-0 left-0 w-full bg-light-purple p-4  sm:px-6 sm:py-5 shadow-md flex justify-between items-center z-50">
       <>
         <h1 className="flex justify-start text-lg font-bold text-white md:text-2xl whitespace-nowrap">
