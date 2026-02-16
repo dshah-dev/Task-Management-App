@@ -1,54 +1,19 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
-import { adduser } from "../../../redux/authSlice";
+import React from "react";
 import Button from "../../../common/components/Button";
 import DynamicFormController from "../../../common/components/custom-forms";
 import LOGIN_IN from "../constant/index";
+import { useLoginLogic } from "../hooks/useLoginLogic";
 import AuthSideImage from "../../../common/layout/backgroundImage";
-import { fetchUsers } from "../../../redux/usersSlice";
-import {
-  switchToSignup,
-  closeAuthState,
-} from "../../../redux/authStateManageSlice";
-import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
-  const {
-    control,
-    handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
-  } = useForm();
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { users } = useSelector((state) => state.users);
-
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
-
-  const onSubmit = async (data) => {
-    await new Promise((res) => setTimeout(res, 1000));
-    const existingUser = users.find((u) => u.email === data.email);
-    if (!existingUser) {
-      setError("email", { message: "User does not exist" });
-      return;
-    }
-    if (existingUser.password !== data.password) {
-      setError("password", { message: "Incorrect password" });
-      return;
-    }
-    dispatch(adduser(existingUser));
-    dispatch(closeAuthState());
-    navigate("/dashboard");
-  };
-
-  const onSignup = (e) => {
-    e.preventDefault();
-    dispatch(switchToSignup());
-  };
+  const { 
+    control, 
+    errors, 
+    isLoading, 
+    handleSubmit, 
+    onSubmit, 
+    onSignup 
+  } = useLoginLogic();
 
   return (
     <div className=" bg-theme flex">
@@ -56,7 +21,7 @@ function LoginPage() {
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="w-full max-w-sm">
           <header className="mb-10 text-center">
-            <h1 className="text-2xl font-semibold text-white mb-3">Login</h1>
+            <h1 className="text-2xl font-semibold text-white my-3">Login</h1>
             <div className="flex items-center justify-center gap-4">
               <span className="h-px w-20 bg-white" />
               <p className="text-white text-sm whitespace-nowrap">
@@ -82,11 +47,11 @@ function LoginPage() {
               </button>
             </div>
 
-            <Button variant="auth" type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Processing..." : "Login"}
+            <Button variant="auth" type="submit" disabled={isLoading}>
+              {isLoading ? "Processing..." : "Login"}
             </Button>
 
-            <div className="text-center mt-6">
+            <div className="text-center my-6">
               <p className="text-gray-300 text-xs">
                 Don&apos;t have an account?{" "}
                 <button
